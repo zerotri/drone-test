@@ -1,0 +1,9 @@
+image: test.img
+services:
+  - postgresql
+script:
+  - mkdir -p /tmp/test_cache
+  - sudo chown -R ubuntu:ubuntu /tmp/test_cache
+  - echo "test" > /tmp/test_cache/test.img
+cache:
+  - /tmp/test_cache
