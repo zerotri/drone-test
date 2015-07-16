@@ -1,4 +1,4 @@
-image: test.img
+image: python
 script:
   - mkdir -p /tmp/test_cache
   - sudo chown -R ubuntu:ubuntu /tmp/test_cache
