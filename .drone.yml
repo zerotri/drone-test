@@ -1,3 +1,11 @@
-image: alpine:3.2
-script:
-  - echo hello world
+workspace:
+  base: /drone
+  path: src/github.com/drone/drone
+
+pipeline:
+  build:
+    image: alpine:3.2
+    commands:
+      - echo "Building..."
+    when:
+      event: push
