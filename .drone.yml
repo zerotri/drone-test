@@ -1,3 +1,3 @@
-image: alpine
+image: alpine:3.2
 script:
   - echo hello world
