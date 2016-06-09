@@ -7,5 +7,17 @@ pipeline:
     image: alpine
     commands:
       - echo "Building..."
+      - touch drone-upload
     when:
       event: push
+
+publish:
+  s3:
+    acl: public-read
+    region: "us-west-1"
+    bucket: "test-drone-uploads"
+    access_key: $$AWS_ACCESS_KEY_ID
+    secret_key: $$AWS_SECRET_ACCESS_KEY
+    source: drone-upload
+    target: /drone-upload
+    recursive: false
