@@ -6,8 +6,7 @@ pipeline:
   build:
     image: alpine
     commands:
-      - echo "Building..."
-      - touch drone-upload
+      - echo "Building..." > drone-upload
     when:
       event: push
   publish:
@@ -19,7 +18,7 @@ pipeline:
     region: "us-west-1"
     bucket: test-drone-uploads
     source: drone-upload
-    target: /drone-upload
+    target: /drone-upload_${DRONE_BRANCH}_${DRONE_BUILD_NUMBER}_${DRONE_COMMIT}
     when:
       event: push
       branch: master
