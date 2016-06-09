@@ -12,11 +12,12 @@ pipeline:
       event: push
   publish:
     image: s3
+    environment:
+      - AWS_ACCESS_KEY=$$AWS_ACCESS_KEY_ID
+      - AWS_SECRET_KEY=$$AWS_SECRET_ACCESS_KEY
     acl: public-read
     region: "us-west-1"
     bucket: test-drone-uploads
-    access_key: $$AWS_ACCESS_KEY_ID
-    secret_key: $$AWS_SECRET_ACCESS_KEY
     source: drone-upload
     target: /drone-upload
     when:
